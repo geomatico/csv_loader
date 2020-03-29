@@ -2,6 +2,8 @@ import unittest
 import csv
 import os
 
+from csv_loader.use_cases import create_feature
+
 CSV_FOLDER_PATH = 'tests/data'
 
 class TestCSVLoader(unittest.TestCase):
@@ -17,4 +19,4 @@ class TestCSVLoader(unittest.TestCase):
         with open(os.path.join(CSV_FOLDER_PATH, csv_name)) as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
             for row in reader:
-                print(row)
+                feature = create_feature(row)
