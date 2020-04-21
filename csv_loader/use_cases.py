@@ -37,5 +37,6 @@ def save_as_geojson(features, type, path=None):
         import tempfile
         filepath = os.path.join(tempfile.mkdtemp(), name)
 
+    print('Saving geojson in {}'.format(filepath))
     with open(filepath, 'w') as geojson:
         json.dump(feature_collection, geojson)

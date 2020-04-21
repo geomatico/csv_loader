@@ -5,6 +5,7 @@ from csv_loader.entity import Foundation, Road
 
 def create_geometries_from_csv(csv_path, geojson_path=None):
     features = []
+    print('Creating geojson from {}'.format(csv_path))
     with open(csv_path) as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
         foundations = []
