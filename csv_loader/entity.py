@@ -1,5 +1,5 @@
 from typing import List
-from shapely.geometry import Point, LineString
+from shapely.geometry import Point, LineString, mapping
 
 class Foundation(object):
 
@@ -35,6 +35,16 @@ class Foundation(object):
     def location(self, coords):
         self._location = Point(coords[self._x], coords[self._y])
 
+    def to_geojson(self):
+        return {
+            "type": "Feature",
+            "geometry": mapping(self._location),
+            "properties": {
+                "name": self._name,
+                "windfarm": self._windfarm
+            }
+        }
+
 
 class Road(object):
 
@@ -66,3 +76,14 @@ class Road(object):
     @path.setter
     def path(self, coords):
         self._path = LineString(list(zip(coords[0::2], coords[1::2])))
+
+
+    def to_geojson(self):
+        return {
+            "type": "Feature",
+            "geometry": mapping(self._path),
+            "properties": {
+                "name": self._name,
+                "windfarm": self._windfarm
+            }
+        }

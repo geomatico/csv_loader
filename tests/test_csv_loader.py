@@ -1,10 +1,6 @@
 import unittest
-import csv
 import os
-
-from csv_loader.use_cases import create_feature
-
-CSV_FOLDER_PATH = 'tests/data'
+from csv_loader.csv_loader import create_geometries_from_csv
 
 class TestCSVLoader(unittest.TestCase):
 
@@ -15,8 +11,8 @@ class TestCSVLoader(unittest.TestCase):
         return super().tearDown()
 
     def test_load_csv(self):
-        csv_name = 'test.csv'
-        with open(os.path.join(CSV_FOLDER_PATH, csv_name)) as csvfile:
-            reader = csv.reader(csvfile, delimiter=',')
-            for row in reader:
-                feature = create_feature(row)
+        csv_path = os.path.join('tests/data', 'test.csv')
+        geojson_path = 'tests/data'
+        create_geometries_from_csv(csv_path, geojson_path)
+        
+

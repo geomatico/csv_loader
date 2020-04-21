@@ -144,3 +144,6 @@ static
 
 # Code
 .vscode
+
+# geojson
+*.geojson
