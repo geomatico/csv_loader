@@ -20,4 +20,3 @@ if __name__ == '__main__':
         create_geometries_from_csv(arguments['CSV'])
     elif arguments['CSV'] and arguments['--geojson_path']:
         create_geometries_from_csv(arguments['CSV'], arguments['--geojson_path'])
-        print('geojson saved in {}'.format(arguments['--geojson_path']))
