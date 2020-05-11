@@ -126,7 +126,10 @@ class Road(object):
         road_3857 = shapely_transform(wgs84_to_mercator.transform, self.path)
         size_3857 = size / math.cos(math.pi * self.path.centroid.y / 180)
         distance_3857 = size_3857 / 2
-        max_distance_3857 = road_3857.length - size_3857 / 2
+        max_distance_3857 = road_3857.length - distance_3857
+
+        if size_3857 > road_3857.length:
+            centroids.append(Centroid(shapely_transform(mercator_to_wgs84.transform, road_3857.centroid)))
 
         while distance_3857 <= max_distance_3857:
             centroid_3857 = road_3857.interpolate(distance_3857)

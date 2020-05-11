@@ -18,6 +18,11 @@ class TestCSVLoader(unittest.TestCase):
     def test_centroids_csv(self):
         csv_path = os.path.join('tests/data', 'test_centroids.csv')
         geojson_path = 'tests/data'
+        create_centroids_from_csv(csv_path, geojson_path)    
+        
+    def test_centroids_shorter_csv(self):
+        csv_path = os.path.join('tests/data', 'test_centroids_shorter.csv')
+        geojson_path = 'tests/data'
         create_centroids_from_csv(csv_path, geojson_path)
         
 
